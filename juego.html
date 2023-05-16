@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Workbox - Juego de Adivinanzas</title>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .container {
+      margin-top: 50px;
+    }
+    .guess-container {
+      margin-bottom: 20px;
+    }
+    .guess-input {
+      width: 200px;
+    }
+    .guess-result {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    .btn-reset {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Workbox</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="Inicio.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="mp3.html">Divisas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="notas.html">Notas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="juego.html">Juego</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="mapa.html">Mapa</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="lt.html">Tareas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+  <div class="container">
+    <h1>Juego de Adivinanzas</h1>
+    <div class="guess-container">
+      <input type="number" id="guessInput" class="guess-input" placeholder="Ingresa tu respuesta">
+      <button class="btn btn-primary" onclick="checkGuess()">Comprobar</button>
+      <p id="guessResult" class="guess-result"></p>
+    </div>
+    <button class="btn btn-reset" onclick="resetGame()">Reiniciar Juego</button>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    var randomNumber = Math.floor(Math.random() * 10) + 1;
+    
+    function checkGuess() {
+      var guess = parseInt($('#guessInput').val());
+      if (guess === randomNumber) {
+        $('#guessResult').text('¡Adivinaste!');
+      } else if (guess < randomNumber) {
+        $('#guessResult').text('Intenta con un número mayor');
+      } else {
+        $('#guessResult').text('Intenta con un número menor');
+      }
+    }
+    
+    function resetGame() {
+      randomNumber = Math.floor(Math.random() * 10) + 1;
+      $('#guessInput').val('');
+      $('#guessResult').text('');
+    }
+  </script>
+</body>
+<footer class="footer">
+    <div class="container text-center">
+      <p>&copy; 2023 Workbox. Diseñado y Creado por Carlos Chávez. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+</html>
